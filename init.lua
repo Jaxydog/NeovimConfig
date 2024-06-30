@@ -13,6 +13,7 @@ end
 
 vim.opt.rtp:prepend(lazy_path)
 
+require('jaxydog.init')
 require('lazy').setup({
 	{
 		'catppuccin/nvim',
