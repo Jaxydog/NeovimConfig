@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'bash', 'lua', 'rust' },
+    ensure_installed = { 'bash', 'lua', 'rust', 'vim', 'vimdoc' },
     sync_install = false,
     auto_install = true,
     highlight = {
