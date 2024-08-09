@@ -54,7 +54,11 @@ require('lazy').setup({
         config = function()
             require('nvim-silicon').setup({
                 font = 'Fira Code=32;Noto Color Emoji=32',
-                theme = 'Catppuccin Mocha'
+                theme = 'Catppuccin Mocha',
+                line_offset = function(args) return args.line1 end,
+                to_clipboard = true,
+                wslclipboard = 'auto',
+                wslclipboardcopy = 'keep',
             })
         end,
     },
