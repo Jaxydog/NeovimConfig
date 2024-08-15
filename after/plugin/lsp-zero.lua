@@ -18,7 +18,7 @@ lsp.extend_lspconfig({
     float_border = 'rounded',
     sign_text = true,
     lsp_attach = function(client, buffer)
-        lsp.default_keymaps({ buffer = buffer })
+        lsp.default_keymaps({ buffer = buffer, preserve_mappings = false })
 
         if client.supports_method('textDocument/formatting') then
             lsp.buffer_autoformat()
