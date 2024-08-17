@@ -50,7 +50,10 @@ jdtls.start_or_attach({
             buffer = buffer,
             group = vim.api.nvim_create_augroup('jdtls-ext', { clear = true }),
             desc = 'Formats the current buffer on write.',
-            callback = function() vim.lsp.buf.format() end,
+            callback = function()
+                jdtls.organize_imports()
+                vim.lsp.buf.format()
+            end,
         })
     end,
     root_dir = vim.fs.root(0, root_file_names),
