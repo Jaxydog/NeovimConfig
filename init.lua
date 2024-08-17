@@ -47,6 +47,9 @@ require('lazy').setup({
         'L3MON4D3/LuaSnip',
     },
     {
+        'mfussenegger/nvim-jdtls',
+    },
+    {
         'michaelrommel/nvim-silicon',
         lazy = true,
         cmd = 'Silicon',
