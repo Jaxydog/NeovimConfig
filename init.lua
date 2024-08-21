@@ -50,6 +50,11 @@ require('lazy').setup({
         'mfussenegger/nvim-jdtls',
     },
     {
+        'mrcjkb/rustaceanvim',
+        version = '^5',
+        lazy = false,
+    },
+    {
         'michaelrommel/nvim-silicon',
         lazy = true,
         cmd = 'Silicon',

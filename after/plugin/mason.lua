@@ -3,7 +3,7 @@ local lsp = require('lsp-zero')
 require('mason').setup({})
 
 require('mason-lspconfig').setup({
-    ensure_installed = { 'lua_ls', 'markdown_oxide', 'rust_analyzer' },
+    ensure_installed = { 'lua_ls', 'markdown_oxide' },
     handlers = {
         lsp.default_setup,
         lua_ls = function()
@@ -24,11 +24,37 @@ require('mason-lspconfig').setup({
                 capabilities = capabilities,
             })
         end,
-        rust_analyzer = function()
-            require('lspconfig').rust_analyzer.setup({
-                on_attach = lsp.on_attach,
-                settings = { ['rust-analyzer'] = { checkOnSave = { command = 'clippy' } } }
-            })
-        end,
+        rust_analyzer = lsp.noop,
     },
 })
+
+vim.g.rustaceanvim = {
+    tools = {
+        enable_clippy = true,
+        test_executor = 'background',
+    },
+    server = {
+        capabilities = lsp.get_capabilities(),
+        on_attach = function(client, buffer)
+            vim.keymap.set('n', '<leader>-', function() vim.cmd.RustLsp('parentModule') end)
+
+            vim.keymap.set({ 'n', 'v' }, '<leader>jl', function() vim.cmd.RustLsp('joinLines') end)
+
+            vim.keymap.set({ 'n', 'v' }, '<leader>d', function() vim.cmd.RustLsp('renderDiagnostic') end)
+            vim.keymap.set({ 'n', 'v' }, '<leader>D', function() vim.cmd.RustLsp('explainError') end)
+
+            vim.keymap.set('n', '<leader>R', function() vim.cmd.RustLsp('rebuildProcMacros') end)
+            vim.keymap.set({ 'n', 'v' }, '<leader>X', function() vim.cmd.RustLsp('expandMacro') end)
+
+            vim.keymap.set('n', '<leader>hv', function() vim.cmd.RustLsp({ 'view', 'hir' }) end)
+            vim.keymap.set('n', '<leader>mv', function() vim.cmd.RustLsp({ 'view', 'mir' }) end)
+
+            vim.keymap.set({ 'n', 'v' }, '<leader><Up>', function() vim.cmd.RustLsp({ 'moveItem', 'up' }) end)
+            vim.keymap.set({ 'n', 'v' }, '<leader><Down>', function() vim.cmd.RustLsp({ 'moveItem', 'down' }) end)
+        end,
+        default_settings = {
+            ['rust-analyzer'] = {},
+        },
+    },
+    dap = {},
+}
