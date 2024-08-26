@@ -31,6 +31,12 @@ require('lazy').setup({
         'williamboman/mason-lspconfig.nvim',
     },
     {
+        'zapling/mason-lock.nvim',
+        init = function()
+            require('mason-lock').setup()
+        end
+    },
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = "v4.x",
     },

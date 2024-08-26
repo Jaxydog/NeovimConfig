@@ -1,0 +1,8 @@
+{
+  "bash-language-server": "5.4.0",
+  "biome": "1.8.3",
+  "jdtls": "v1.38.0",
+  "lua-language-server": "3.10.5",
+  "markdown-oxide": "v0.23.1",
+  "taplo": "0.9.3"
+}
