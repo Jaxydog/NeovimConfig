@@ -1,17 +1,17 @@
-local select_hl_group = 'CursorSelectNr'
-local select_partial_hl_group = 'CursorPartialSelectNr'
-local select_namespace = vim.api.nvim_create_namespace('hl-' .. select_hl_group)
+local hl_group = 'SelectLineNr'
+local hl_partial_group = 'PartialSelectLineNr'
+local hl_namespace = vim.api.nvim_create_namespace('hl-' .. hl_group)
 
 require('catppuccin').setup({
     custom_highlights = function(colors)
         return {
             CursorLineNr = { bold = true },
-            CursorPartialSelectNr = {
-                bold = true,
+
+            [hl_partial_group] = {
                 foreground = colors.lavender,
                 background = colors.surface0,
             },
-            CursorSelectNr = {
+            [hl_group] = {
                 bold = true,
                 foreground = colors.lavender,
                 background = colors.surface2,
@@ -26,47 +26,52 @@ require('catppuccin').setup({
     integrations = { mason = true }
 })
 
-local cursor_select_hl_auto_group = vim.api.nvim_create_augroup('cursor_select_hl', {})
+local function hl_bounds(start_row, start_col, stop_row, stop_col)
+    return {
+        start = start_row - 1,
+        stop = stop_row - 1,
+        start_partial = start_col > 1,
+        stop_partial = stop_col < vim.fn.charcol({ stop_row, '$' }) - 1
+    }
+end
+
+
+local function hl_select_line_nr(event)
+    local visual_modes = { 'v', 'V', '<C-V>' }
+
+    vim.api.nvim_buf_clear_namespace(event.buf, hl_namespace, 0, -1)
+
+    local mode = vim.api.nvim_get_mode().mode
+
+    if not vim.tbl_contains(visual_modes, mode) then return end
+
+    local _, cursor_row, cursor_col = unpack(vim.fn.getpos('.'))
+    local _, select_row, select_col = unpack(vim.fn.getpos('v'))
+
+    local hl
+
+    if cursor_row >= select_row then
+        hl = hl_bounds(select_row, select_col, cursor_row, cursor_col)
+    else
+        hl = hl_bounds(cursor_row, cursor_col, select_row, select_col)
+    end
+
+    for line = hl.start, hl.stop, 1 do
+        local partial = false
+
+        if line == hl.start then partial = partial or hl.start_partial end
+        if line == hl.stop then partial = partial or hl.stop_partial end
+
+        local group = (mode ~= 'V' and partial) and hl_partial_group or hl_group
+
+        vim.api.nvim_buf_set_extmark(event.buf, hl_namespace, line, 0, { number_hl_group = group })
+    end
+end
 
 vim.api.nvim_create_autocmd({ 'CursorMoved', 'ModeChanged' }, {
-    group = cursor_select_hl_auto_group,
+    group = vim.api.nvim_create_augroup('hl_select_line_nr', {}),
     desc = 'Add highlighting to the numbers for selected lines',
-    callback = function(event)
-        local visual_modes = { 'v', 'V', '<C-V>' }
-        local mode = vim.api.nvim_get_mode().mode
-
-        vim.api.nvim_buf_clear_namespace(event.buf, select_namespace, 0, -1)
-
-        if vim.tbl_contains(visual_modes, mode) then
-            local _, cursor_row, cursor_col = unpack(vim.fn.getpos('.'))
-            local _, select_row, select_col = unpack(vim.fn.getpos('v'))
-
-            local hl = {}
-
-            if cursor_row >= select_row then
-                hl.start = select_row - 1
-                hl.stop = cursor_row - 1
-                hl.start_partial = select_col > 1
-                hl.stop_partial = cursor_col < vim.fn.charcol('$') - 1
-            else
-                hl.start = cursor_row - 1
-                hl.stop = select_row - 1
-                hl.start_partial = cursor_col > 1
-                hl.stop_partial = select_col < vim.fn.charcol({ select_row, '$' }) - 1
-            end
-
-            for line = hl.start, hl.stop, 1 do
-                local partial = false
-
-                if line == hl.start then partial = hl.start_partial end
-                if line == hl.stop then partial = hl.stop_partial end
-
-                local group = (mode ~= 'V' and partial) and select_partial_hl_group or select_hl_group
-
-                vim.api.nvim_buf_set_extmark(event.buf, select_namespace, line, 0, { number_hl_group = group })
-            end
-        end
-    end
+    callback = hl_select_line_nr,
 })
 
 function SetTheme(color)
