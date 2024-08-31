@@ -1,10 +1,16 @@
 local select_hl_group = 'CursorSelectNr'
+local select_partial_hl_group = 'CursorPartialSelectNr'
 local select_namespace = vim.api.nvim_create_namespace('hl-' .. select_hl_group)
 
 require('catppuccin').setup({
     custom_highlights = function(colors)
         return {
             CursorLineNr = { bold = true },
+            CursorPartialSelectNr = {
+                bold = true,
+                foreground = colors.lavender,
+                background = colors.surface0,
+            },
             CursorSelectNr = {
                 bold = true,
                 foreground = colors.lavender,
@@ -32,16 +38,32 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'ModeChanged' }, {
         vim.api.nvim_buf_clear_namespace(event.buf, select_namespace, 0, -1)
 
         if vim.tbl_contains(visual_modes, mode) then
-            local _, cursor_row = unpack(vim.fn.getpos('.'))
-            local _, select_row = unpack(vim.fn.getpos('v'))
+            local _, cursor_row, cursor_col = unpack(vim.fn.getpos('.'))
+            local _, select_row, select_col = unpack(vim.fn.getpos('v'))
 
-            local hl_start = (cursor_row <= select_row and cursor_row or select_row) - 1
-            local hl_end = (select_row >= cursor_row and select_row or cursor_row) - 1
+            local hl = {}
 
-            for line = hl_start, hl_end, 1 do
-                vim.api.nvim_buf_set_extmark(event.buf, select_namespace, line, 0, {
-                    number_hl_group = select_hl_group,
-                })
+            if cursor_row >= select_row then
+                hl.start = select_row - 1
+                hl.stop = cursor_row - 1
+                hl.start_partial = select_col > 1
+                hl.stop_partial = cursor_col < vim.fn.charcol('$') - 1
+            else
+                hl.start = cursor_row - 1
+                hl.stop = select_row - 1
+                hl.start_partial = cursor_col > 1
+                hl.stop_partial = select_col < vim.fn.charcol({ select_row, '$' }) - 1
+            end
+
+            for line = hl.start, hl.stop, 1 do
+                local partial = false
+
+                if line == hl.start then partial = hl.start_partial end
+                if line == hl.stop then partial = hl.stop_partial end
+
+                local group = (mode ~= 'V' and partial) and select_partial_hl_group or select_hl_group
+
+                vim.api.nvim_buf_set_extmark(event.buf, select_namespace, line, 0, { number_hl_group = group })
             end
         end
     end
