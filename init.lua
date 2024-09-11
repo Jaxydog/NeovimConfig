@@ -83,6 +83,10 @@ require('lazy').setup({
         lazy = true,
     },
     {
+        'stevearc/conform.nvim',
+        opts = {},
+    },
+    {
         'michaelrommel/nvim-silicon',
         lazy = true,
         cmd = 'Silicon',

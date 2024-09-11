@@ -58,3 +58,10 @@ vim.g.rustaceanvim = {
     },
     dap = {},
 }
+
+require('conform').setup({
+    formatters_by_ft = {
+        markdown = { 'mdformat' },
+    },
+    format_on_save = {},
+})
