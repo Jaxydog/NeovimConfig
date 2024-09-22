@@ -15,6 +15,6 @@
   "nvim-jdtls": { "branch": "master", "commit": "99e4b2081de1d9162666cc7b563cbeb01c26b66b" },
   "nvim-lspconfig": { "branch": "master", "commit": "f4fef355efa3c5d0813512480ee7b2c050b09fe4" },
   "nvim-silicon": { "branch": "main", "commit": "9fe6001dc8cad4d9c53bcfc8649e3dc76ffa169c" },
-  "nvim-treesitter": { "branch": "master", "commit": "929ca9c76ee20bb27cffbde4ee90583b6c54d616" },
+  "nvim-treesitter": { "branch": "master", "commit": "20b5cbfa92cac93ab78f3fefeb6169e4ea303189" },
   "rustaceanvim": { "branch": "master", "commit": "6511cb09310972f07c859836e5051e7434a19fc7" }
 }
