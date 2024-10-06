@@ -6,6 +6,13 @@ require('mason-lspconfig').setup({
     ensure_installed = { 'lua_ls', 'markdown_oxide' },
     handlers = {
         lsp.default_setup,
+        clangd = function()
+            require('lspconfig').clangd.setup({
+                on_attach = function(client, buffer)
+                    vim.keymap.set('n', '<leader>sh', vim.cmd.ClangdSwitchSourceHeader)
+                end
+            })
+        end,
         lua_ls = function()
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
         end,
