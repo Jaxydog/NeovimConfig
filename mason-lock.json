@@ -1,6 +1,6 @@
 {
+  "arduino-language-server": "0.7.6",
   "bash-language-server": "5.4.2",
-  "biome": "1.9.3",
   "clangd": "19.1.0",
   "gdtoolkit": "4.3.1",
   "harper-ls": "v0.11.0",
