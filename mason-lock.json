@@ -2,11 +2,15 @@
   "arduino-language-server": "0.7.6",
   "bash-language-server": "5.4.2",
   "clangd": "19.1.0",
+  "css-lsp": "4.10.0",
+  "emmet-ls": "0.4.2",
   "gdtoolkit": "4.3.1",
   "harper-ls": "v0.11.0",
+  "html-lsp": "4.10.0",
   "jdtls": "v1.38.0",
   "lua-language-server": "3.11.1",
   "markdown-oxide": "v0.24.2",
+  "mdformat": "0.7.18",
   "taplo": "0.9.3",
-
+  "typescript-language-server": "4.3.3"
 }
