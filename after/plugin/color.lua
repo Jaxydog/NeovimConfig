@@ -50,7 +50,13 @@ local function hl_select_line_nr(event)
 
     local hl
 
-    if cursor_row >= select_row then
+    if cursor_row == select_row then
+        if cursor_col >= select_col then
+            hl = hl_bounds(select_row, select_col, cursor_row, cursor_col)
+        else
+            hl = hl_bounds(select_row, cursor_col, cursor_row, select_col)
+        end
+    elseif cursor_row > select_row then
         hl = hl_bounds(select_row, select_col, cursor_row, cursor_col)
     else
         hl = hl_bounds(cursor_row, cursor_col, select_row, select_col)
