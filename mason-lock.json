@@ -11,7 +11,7 @@
   "json-lsp": "4.10.0",
   "lua-language-server": "3.13.0",
   "markdown-oxide": "v0.24.3",
-  "mdformat": "0.7.18",
+  "mdformat": "0.7.19",
   "svelte-language-server": "0.17.6",
   "taplo": "0.9.3",
   "typescript-language-server": "4.3.3"
