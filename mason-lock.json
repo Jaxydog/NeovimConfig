@@ -9,10 +9,10 @@
   "html-lsp": "4.10.0",
   "jdtls": "v1.41.0",
   "json-lsp": "4.10.0",
-  "lua-language-server": "3.13.0",
+  "lua-language-server": "3.13.2",
   "markdown-oxide": "v0.24.3",
   "mdformat": "0.7.19",
-  "svelte-language-server": "0.17.6",
+  "svelte-language-server": "0.17.7",
   "taplo": "0.9.3",
   "typescript-language-server": "4.3.3"
 }
