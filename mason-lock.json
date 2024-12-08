@@ -1,7 +1,7 @@
 {
   "arduino-language-server": "0.7.6",
   "bash-language-server": "5.4.2",
-  "clangd": "19.1.0",
+  "clangd": "19.1.2",
   "css-lsp": "4.10.0",
   "emmet-ls": "0.4.2",
   "gdtoolkit": "4.3.3",
@@ -9,7 +9,7 @@
   "html-lsp": "4.10.0",
   "jdtls": "v1.41.0",
   "json-lsp": "4.10.0",
-  "lua-language-server": "3.13.2",
+  "lua-language-server": "3.13.3",
   "markdown-oxide": "v0.24.3",
   "mdformat": "0.7.19",
   "svelte-language-server": "0.17.7",
