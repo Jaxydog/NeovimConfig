@@ -37,10 +37,6 @@ require('lazy').setup({
         end
     },
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = "v4.x",
-    },
-    {
         'neovim/nvim-lspconfig',
     },
     {
@@ -56,9 +52,6 @@ require('lazy').setup({
                 group_index = 0,
             })
         end,
-    },
-    {
-        'L3MON4D3/LuaSnip',
     },
     {
         'mfussenegger/nvim-jdtls',
