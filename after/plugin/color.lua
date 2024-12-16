@@ -5,9 +5,8 @@ local hl_namespace = vim.api.nvim_create_namespace('hl-' .. hl_group)
 require('catppuccin').setup({
     custom_highlights = function(colors)
         return {
-            CursorLineNr = { bold = true },
-
             [hl_partial_group] = {
+                bold = false,
                 foreground = colors.lavender,
                 background = colors.surface0,
             },
