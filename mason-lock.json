@@ -12,7 +12,7 @@
   "lua-language-server": "3.13.4",
   "markdown-oxide": "v0.25.0",
   "mdformat": "0.7.19",
-  "svelte-language-server": "0.17.7",
+  "svelte-language-server": "0.17.8",
   "taplo": "0.9.3",
   "typescript-language-server": "4.3.3"
 }
