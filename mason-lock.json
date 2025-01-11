@@ -15,5 +15,5 @@
   "svelte-language-server": "0.17.10",
   "taplo": "0.9.3",
   "typescript-language-server": "4.3.3",
-  "yamlfmt": "v0.14.0"
+  "yamlfmt": "v0.15.0"
 }
