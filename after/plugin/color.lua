@@ -34,7 +34,6 @@ local function hl_bounds(start_row, start_col, stop_row, stop_col)
     }
 end
 
-
 local function hl_select_line_nr(event)
     local visual_modes = { 'v', 'V', '<C-V>' }
 
