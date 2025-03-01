@@ -26,6 +26,10 @@ require('lazy').setup({
         },
     },
     {
+        'xiyaowong/transparent.nvim',
+        lazy = false,
+    },
+    {
         'nvim-treesitter/nvim-treesitter',
         command = 'TSUpdate',
     },
