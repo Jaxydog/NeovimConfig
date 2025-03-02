@@ -11,9 +11,9 @@
   "mason.nvim": { "branch": "main", "commit": "fc98833b6da5de5a9c5b1446ac541577059555be" },
   "nvim-cmp": { "branch": "main", "commit": "c27370703e798666486e3064b64d59eaf4bdc6d5" },
   "nvim-jdtls": { "branch": "master", "commit": "2f7bff9b8d2ee1918b36ca55f19547d9d335a268" },
-  "nvim-lspconfig": { "branch": "master", "commit": "a3f8422b752e03334dbaf4a46940d8aee0acdebf" },
+  "nvim-lspconfig": { "branch": "master", "commit": "8e8fd432f05b126a9dd1635e8022c7e7d1a04e60" },
   "nvim-silicon": { "branch": "main", "commit": "7f66bda8f60c97a5bf4b37e5b8acb0e829ae3c32" },
-  "nvim-treesitter": { "branch": "master", "commit": "c1efc9a9058bb54cfcb6f0a4fc14a4ac8a66bdaa" },
+  "nvim-treesitter": { "branch": "master", "commit": "186f35e1684c241baf13a3e6092eee00ac48631e" },
   "rustaceanvim": { "branch": "master", "commit": "2b0f0b7e03751cf8ed123322f9b02d8f73fa9df7" },
   "transparent.nvim": { "branch": "main", "commit": "8a2749a2fa74f97fe6557f61b89ac7fd873f3c21" }
 }
