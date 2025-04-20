@@ -1,19 +1,11 @@
 {
   "actionlint": "v1.7.7",
-  "bash-language-server": "5.4.3",
-  "clangd": "20.1.0",
-  "css-lsp": "4.10.0",
-  "emmet-ls": "0.4.2",
-  "harper-ls": "v0.26.0",
-  "html-lsp": "4.10.0",
-  "jdtls": "v1.45.0",
-  "json-lsp": "4.10.0",
-  "lua-language-server": "3.13.9",
+  "bash-language-server": "5.6.0",
+  "harper-ls": "v0.29.1",
+  "lua-language-server": "3.14.0",
   "markdown-oxide": "v0.25.1",
   "mdformat": "0.7.22",
   "shfmt": "v3.11.0",
-  "svelte-language-server": "0.17.11",
   "taplo": "0.9.3",
-  "typescript-language-server": "4.3.4",
   "yamlfmt": "v0.16.0"
 }
