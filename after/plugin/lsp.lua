@@ -159,7 +159,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         if client == nil then return end
 
-        if client.supports_method('textDocument/formatting') then
+        if client:supports_method('textDocument/formatting') then
             buffer_autoformat(event.buf)
         end
     end,
