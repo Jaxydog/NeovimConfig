@@ -3,6 +3,7 @@ local hl_partial_group = 'PartialSelectLineNr'
 local hl_namespace = vim.api.nvim_create_namespace('hl-' .. hl_group)
 
 require('catppuccin').setup({
+    float = { solid = true, transparent = false },
     custom_highlights = function(colors)
         return {
             [hl_partial_group] = {
@@ -22,7 +23,7 @@ require('catppuccin').setup({
             DiagnosticUnderlineHint = { undercurl = true },
         }
     end,
-    integrations = { mason = true }
+    integrations = { mason = true },
 })
 
 local function hl_bounds(start_row, start_col, stop_row, stop_col)

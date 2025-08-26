@@ -106,7 +106,6 @@ vim.g.rustaceanvim = {
     dap = {},
 }
 
-vim.opt.signcolumn = 'yes'
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP action mappings',
     callback = function(event)
