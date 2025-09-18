@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
 
 vim.keymap.set('n', '<C-w>e', vim.cmd.Ex)
 vim.keymap.set('n', '<leader>f', function()
