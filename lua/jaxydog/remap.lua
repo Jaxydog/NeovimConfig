@@ -1,7 +1,6 @@
 vim.g.mapleader = ' '
 
 vim.keymap.set('n', '<C-w>e', vim.cmd.Ex)
-vim.keymap.set('n', '<leader>,', require('jaxydog.utility').split_terminal)
 vim.keymap.set('n', '<leader>f', function()
     local success, conform = pcall(require, 'conform')
 
