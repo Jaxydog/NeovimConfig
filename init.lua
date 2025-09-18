@@ -66,8 +66,11 @@ require('lazy').setup({
         'mfussenegger/nvim-jdtls',
     },
     {
+        'mfussenegger/nvim-dap',
+    },
+    {
         'mrcjkb/rustaceanvim',
-        version = '^5',
+        version = '^6',
         lazy = false,
     },
     {
