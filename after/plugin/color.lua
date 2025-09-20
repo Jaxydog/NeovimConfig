@@ -80,9 +80,19 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'ModeChanged' }, {
 })
 
 function SetTheme(color)
+    local valid_schemes = vim.fn.getcompletion('', 'color')
+
     color = color or 'catppuccin-mocha'
 
-    vim.cmd.colorscheme(color)
+    for _, value in ipairs(valid_schemes) do
+        if value == color then
+            vim.cmd.colorscheme(color)
+
+            return
+        end
+    end
+
+    error(('Invalid color scheme: \'%s\''):format(color))
 end
 
 SetTheme()
