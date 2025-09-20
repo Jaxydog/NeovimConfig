@@ -60,11 +60,13 @@ require('mason-lspconfig').setup({
             local client_capabilities = vim.lsp.protocol.make_client_capabilities()
             local capabilities = require('cmp_nvim_lsp').default_capabilities(client_capabilities)
 
-            capabilities.workspace = {
-                didChangeWatchedFiles = {
-                    dynamicRegistration = true,
+            vim.tbl_deep_extend('force', capabilities, {
+                workspace = {
+                    didChangeWatchedFiles = {
+                        dynamicRegistration = true,
+                    },
                 },
-            }
+            })
 
             require('lspconfig').markdown_oxide.setup({ capabilities = capabilities })
         end,
@@ -73,8 +75,12 @@ require('mason-lspconfig').setup({
 })
 
 require('conform').setup({
-    formatters_by_ft = { markdown = { 'mdformat' } },
-    format_on_save = {},
+    formatters_by_ft = {
+        markdown = { 'mdformat' },
+    },
+    format_on_save = {
+        async = false,
+    },
 })
 
 vim.g.rustaceanvim = {
